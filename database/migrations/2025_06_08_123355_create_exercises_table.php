@@ -13,14 +13,6 @@ return new class extends Migration
     {
         Schema::create('exercises', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique(); // Nama latihan harus unik
-            $table->string('type'); // Contoh: 'Cardio', 'Strength', 'Flexibility'
-            
-            // Kolom untuk menyimpan nilai MET (Metabolic Equivalent of Task)
-            // Tipe decimal dengan total 4 digit dan 2 angka di belakang koma (misal: 12.50)
-            $table->decimal('met_value', 4, 2);
-
-            $table->text('description')->nullable(); // Deskripsi latihan, boleh kosong
             $table->timestamps();
         });
     }

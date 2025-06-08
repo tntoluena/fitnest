@@ -19,9 +19,10 @@ class DatabaseSeeder extends Seeder
             'email' => 'testerdua@example.com',
         ]);
 
-        // Memanggil seeder baru untuk mengisi tabel makanan
+        // Memanggil seeder untuk mengisi tabel makanan dan tabel latihan
         $this->call([
             FoodSeeder::class,
+            ExerciseSeeder::class, // <-- Cukup tambahkan baris ini
         ]);
     }
 }
