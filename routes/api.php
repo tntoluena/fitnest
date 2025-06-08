@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\WorkoutController;
 use App\Http\Controllers\Api\ReportController;
 use App\Http\Controllers\Api\RecommendationController;
 use App\Http\Controllers\Api\ChatbotController;
+use App\Http\Controllers\Api\ConsultationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -65,4 +66,6 @@ Route::middleware('auth:sanctum')->group(function () {
 
      // --- RUTE BARU UNTUK CHATBOT AI ---
     Route::post('/chatbot', [ChatbotController::class, 'chat']);
+
+    Route::get('/consultation-info', [ConsultationController::class, 'getInfo']);
 });
