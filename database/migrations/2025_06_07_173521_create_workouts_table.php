@@ -11,16 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('exercises', function (Blueprint $table) {
+        // Kode ini sekarang benar-benar membuat tabel 'workouts'
+        Schema::create('workouts', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique(); // Nama latihan harus unik
-            $table->string('type'); // Contoh: 'Cardio', 'Strength', 'Flexibility'
-            
-            // Kolom untuk menyimpan nilai MET (Metabolic Equivalent of Task)
-            // Tipe decimal dengan total 4 digit dan 2 angka di belakang koma (misal: 12.50)
-            $table->decimal('met_value', 4, 2);
-
-            $table->text('description')->nullable(); // Deskripsi latihan, boleh kosong
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('activity_name');
+            $table->unsignedInteger('duration_minutes');
+            $table->unsignedInteger('calories_burned');
+            $table->string('activity_type')->nullable();
+            $table->date('log_date');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('exercises');
+        Schema::dropIfExists('workouts');
     }
 };

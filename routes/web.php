@@ -2,6 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+*/
+
+// Rute untuk halaman utama
 Route::get('/', function () {
     return response()->json([
         'message' => 'Welcome to Fitnest API Backend!',
@@ -10,6 +17,7 @@ Route::get('/', function () {
     ], 200);
 });
 
-// Pastikan TIDAK ADA Auth::routes(); atau require __DIR__.'/auth.php';
-// Hanya rute-rute yang benar-benar Anda butuhkan untuk web (jika ada,
-// tapi untuk API-only, ini biasanya tidak ada)
+// Rute untuk halaman prototipe (didefinisikan secara terpisah)
+Route::get('/prototype', function () {
+    return view('prototype');
+});

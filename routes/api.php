@@ -67,5 +67,6 @@ Route::middleware('auth:sanctum')->group(function () {
      // --- RUTE BARU UNTUK CHATBOT AI ---
     Route::post('/chatbot', [ChatbotController::class, 'chat']);
 
+    
     Route::get('/consultation-info', [ConsultationController::class, 'getInfo']);
 });
