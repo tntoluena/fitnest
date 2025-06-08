@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\DashboardController;
 use App\Http\Controllers\Api\WorkoutController; 
 use App\Http\Controllers\Api\ReportController;
 use App\Http\Controllers\Api\RecommendationController;
+use App\Http\Controllers\Api\ChatbotController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -61,4 +62,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/reports/weekly', [ReportController::class, 'getWeeklyReport']);
 
     Route::get('/recommendations/workouts', [RecommendationController::class, 'getWorkoutRecommendation']);
+
+     // --- RUTE BARU UNTUK CHATBOT AI ---
+    Route::post('/chatbot', [ChatbotController::class, 'chat']);
 });
