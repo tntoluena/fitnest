@@ -17,8 +17,6 @@ return [
     'allowed_methods' => ['*'],
 
     'allowed_origins' => [
-        // Kita langsung izinkan request yang datang dari alamat server Laravel kita,
-        // karena halaman prototipe kita diakses dari sini.
         'http://127.0.0.1:8000', 
     ],
 

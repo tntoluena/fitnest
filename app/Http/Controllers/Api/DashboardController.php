@@ -10,12 +10,8 @@ use Illuminate\Http\JsonResponse;
 
 class DashboardController extends Controller
 {
-    /**
-     * Menyediakan ringkasan nutrisi harian untuk pengguna, sekarang termasuk data workout.
-     */
     public function getSummary(Request $request): JsonResponse
     {
-        // --- Validasi & Setup Awal (Sama seperti sebelumnya) ---
         $request->validate([
             'date' => 'sometimes|date_format:Y-m-d'
         ]);
@@ -23,7 +19,6 @@ class DashboardController extends Controller
         $logDate = $request->input('date', now()->toDateString());
         $user = Auth::user();
 
-        // --- Data Makanan (Sama, tapi kita simpan di variabel) ---
         $foodLogsForDate = $user->foodLogs()
                               ->whereDate('log_date', $logDate)
                               ->get();
@@ -33,15 +28,12 @@ class DashboardController extends Controller
         $fatConsumed = $foodLogsForDate->sum('fat');
         $carbsConsumed = $foodLogsForDate->sum('carbs');
 
-        // --- TAMBAHAN BARU: Menghitung Kalori Terbakar dari Workout ---
         $caloriesBurned = $user->workouts()
                              ->whereDate('log_date', $logDate)
                              ->sum('calories_burned');
 
-        // --- KALKULASI BARU: Kalori Bersih (Net Calories) ---
         $netCalories = $caloriesConsumed - $caloriesBurned;
 
-        // --- Gabungkan semua data dalam satu response JSON yang lebih rapi ---
         return response()->json([
             'date' => $logDate,
             'summary' => [
@@ -56,10 +48,6 @@ class DashboardController extends Controller
         ]);
     }
 
-    /**
-     * Memberikan rekomendasi makanan berdasarkan sisa kalori, dengan filter dan sorting.
-     * (Metode ini tidak diubah)
-     */
     public function getRecommendations(Request $request): JsonResponse
     {
         $user = Auth::user();

@@ -8,15 +8,12 @@ use App\Models\FoodLog;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests; // <-- 1. TAMBAHKAN INI
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests; 
 
 class FoodLogController extends Controller
 {
-    use AuthorizesRequests; // <-- 2. TAMBAHKAN INI
+    use AuthorizesRequests; 
 
-    /**
-     * Display a listing of the resource.
-     */
     public function index(Request $request): JsonResponse
     {
         $request->validate([
@@ -32,9 +29,6 @@ class FoodLogController extends Controller
         return response()->json($foodLogs);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreFoodLogRequest $request): JsonResponse
     {
         $validatedData = $request->validated();
@@ -47,17 +41,11 @@ class FoodLogController extends Controller
         ], 201);
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(FoodLog $foodLog)
     {
-        // Akan kita isi nanti jika diperlukan
+        
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(StoreFoodLogRequest $request, FoodLog $foodLog): JsonResponse
     {
         $this->authorize('update', $foodLog);
@@ -70,9 +58,6 @@ class FoodLogController extends Controller
         ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(FoodLog $foodLog): JsonResponse
     {
         $this->authorize('delete', $foodLog);

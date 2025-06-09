@@ -32,17 +32,13 @@ class FoodLog extends Model
      * @var array<string, string>
      */
     protected $casts = [
-        'log_date' => 'date',         // Akan otomatis diubah menjadi objek Carbon (objek tanggal)
+        'log_date' => 'date',         
         'calories' => 'integer',
-        'protein' => 'decimal:2',   // Selalu 2 angka di belakang koma
+        'protein' => 'decimal:2',   
         'fat' => 'decimal:2',
         'carbs' => 'decimal:2',
     ];
 
-    /**
-     * Mendefinisikan relasi: Setiap FoodLog dimiliki oleh satu User.
-     * Nama fungsi 'user' ini penting untuk memanggil relasinya nanti.
-     */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

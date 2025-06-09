@@ -8,12 +8,9 @@ use Illuminate\Database\Seeder;
 
 class ExerciseSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
+
     public function run(): void
     {
-        // Hapus data lama untuk menghindari duplikat saat seeding ulang
         Exercise::query()->delete();
 
         $exercises = [

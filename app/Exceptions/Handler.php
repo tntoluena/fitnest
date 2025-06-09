@@ -39,7 +39,7 @@ class Handler extends ExceptionHandler
      */
     protected function unauthenticated($request, AuthenticationException $exception)
     {
-        // Untuk aplikasi API-only, selalu kembalikan JSON 401 untuk request yang tidak terautentikasi
+        
         return response()->json(['message' => 'Unauthenticated.'], 401);
     }
 }

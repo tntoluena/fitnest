@@ -8,12 +8,8 @@ use Illuminate\Validation\Rule;
 
 class ProfileRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
-        // Hanya user yang sudah login yang boleh update profil.
         return Auth::check();
     }
 
@@ -24,8 +20,6 @@ class ProfileRequest extends FormRequest
      */
     public function rules(): array
     {
-        // Ini adalah aturan validasi yang benar untuk data profil kita.
-        // Setiap field yang ingin Anda simpan HARUS ada di sini.
         return [
             'age'            => 'nullable|integer|min:15|max:100',
             'gender'         => ['nullable', 'string', Rule::in(['male', 'female'])],

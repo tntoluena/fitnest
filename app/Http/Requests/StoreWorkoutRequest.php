@@ -6,13 +6,8 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StoreWorkoutRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
-        // Izinkan semua pengguna yang sudah terautentikasi untuk membuat request ini.
-        // Keamanan lebih lanjut (memastikan user hanya mengedit miliknya) akan ditangani oleh Policy nanti.
         return true;
     }
 
@@ -25,10 +20,10 @@ class StoreWorkoutRequest extends FormRequest
     {
         return [
             'activity_name'    => ['required', 'string', 'max:255'],
-            'duration_minutes' => ['required', 'integer', 'min:1'], // Minimal 1 menit
+            'duration_minutes' => ['required', 'integer', 'min:1'], 
             'calories_burned'  => ['required', 'integer', 'min:0'],
             'activity_type'    => ['nullable', 'string', 'max:100'],
-            'log_date'         => ['required', 'date_format:Y-m-d'], // Format TTTT-BB-HH
+            'log_date'         => ['required', 'date_format:Y-m-d'], 
         ];
     }
 }

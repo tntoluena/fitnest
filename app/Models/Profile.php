@@ -10,9 +10,6 @@ class Profile extends Model
 {
     use HasFactory;
 
-    /**
-     * The table associated with the model.
-     */
     protected $table = 'profiles';
 
     /**
@@ -22,7 +19,7 @@ class Profile extends Model
      */
     protected $fillable = [
         'user_id',
-        'age', // Ini yang paling penting
+        'age', 
         'gender',
         'height',
         'weight',
@@ -30,9 +27,6 @@ class Profile extends Model
         'calorie_goal',
     ];
 
-    /**
-     * Mendefinisikan relasi bahwa profil ini 'milik' seorang User.
-     */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

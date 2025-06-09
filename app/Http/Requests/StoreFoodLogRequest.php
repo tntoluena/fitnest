@@ -7,14 +7,8 @@ use Illuminate\Validation\Rule;
 
 class StoreFoodLogRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
-        // Karena route kita nanti akan dilindungi oleh middleware 'auth:sanctum',
-        // kita bisa pastikan hanya pengguna terautentikasi yang bisa sampai sini.
-        // Jadi, kita return true.
         return true;
     }
 
@@ -32,7 +26,7 @@ class StoreFoodLogRequest extends FormRequest
             'fat'            => ['required', 'numeric', 'min:0'],
             'carbs'          => ['required', 'numeric', 'min:0'],
             'meal_type'      => ['required', Rule::in(['breakfast', 'lunch', 'dinner', 'snack'])],
-            'log_date'       => ['required', 'date_format:Y-m-d'], // Memastikan formatnya 'Tahun-Bulan-Tanggal'
+            'log_date'       => ['required', 'date_format:Y-m-d'], 
         ];
     }
 }

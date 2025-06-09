@@ -12,16 +12,10 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        // Baris ini sudah benar, kita biarkan saja.
         $middleware->redirectGuestsTo(fn ($request) => $request->expectsJson() ? null : route('login'));
     })
     ->withExceptions(function (Exceptions $exceptions) {
-        
-        // --- TAMBAHKAN BLOK INI ---
-        // Ini adalah "pengaman" terakhir.
-        // Jika terjadi AuthenticationException (error karena token tidak valid)
-        // dan request ditujukan ke URL yang diawali 'api/',
-        // maka paksa kembalikan response JSON error 401 Unauthenticated.
+
         $exceptions->render(function (\Illuminate\Auth\AuthenticationException $e, \Illuminate\Http\Request $request) {
             if ($request->is('api/*')) {
                 return response()->json([
@@ -29,6 +23,5 @@ return Application::configure(basePath: dirname(__DIR__))
                 ], 401);
             }
         });
-        // --- AKHIR BLOK TAMBAHAN ---
 
     })->create();

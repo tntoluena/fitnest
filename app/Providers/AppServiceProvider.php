@@ -3,10 +3,10 @@
 namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
-use App\Models\FoodLog;       // <-- Tambahkan jika belum ada
-use App\Models\Workout;       // <-- 1. IMPORT MODEL WORKOUT
-use App\Policies\FoodLogPolicy; // <-- Tambahkan jika belum ada
-use App\Policies\WorkoutPolicy; // <-- 2. IMPORT WORKOUT POLICY
+use App\Models\FoodLog;       
+use App\Models\Workout;       
+use App\Policies\FoodLogPolicy; 
+use App\Policies\WorkoutPolicy; 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -17,13 +17,10 @@ class AuthServiceProvider extends ServiceProvider
      * @var array<class-string, class-string>
      */
     protected $policies = [
-        FoodLog::class => FoodLogPolicy::class, // <-- Anda mungkin sudah punya ini
-        Workout::class => WorkoutPolicy::class, // <-- 3. DAFTARKAN POLICY DI SINI
+        FoodLog::class => FoodLogPolicy::class, 
+        Workout::class => WorkoutPolicy::class, 
     ];
 
-    /**
-     * Register any authentication / authorization services.
-     */
     public function boot(): void
     {
         //

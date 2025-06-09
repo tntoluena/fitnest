@@ -4,16 +4,13 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Food; // Jangan lupa import model Food
+use App\Models\Food; 
 
 class FoodSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        // Hapus data lama untuk menghindari duplikasi saat seeding ulang
+
         Food::truncate();
 
         $foods = [
@@ -29,7 +26,6 @@ class FoodSeeder extends Seeder
             ['food_name' => 'Ikan Kembung Bakar', 'calories' => 180, 'carbs' => 0, 'protein' => 22, 'fat' => 10, 'serving_size' => '100g', 'meal_type' => 'lunch,dinner'],
         ];
 
-        // Looping dan insert data ke database
         foreach ($foods as $food) {
             Food::create($food);
         }

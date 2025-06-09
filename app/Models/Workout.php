@@ -33,9 +33,6 @@ class Workout extends Model
         'log_date' => 'date',
     ];
 
-    /**
-     * Get the user that owns the workout log.
-     */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

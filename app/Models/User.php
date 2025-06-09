@@ -53,20 +53,12 @@ class User extends Authenticatable
         return $this->hasOne(Profile::class);
     }
 
-    /**
-     * Get the food logs for the user.
-     * Ini adalah relasi "satu User memiliki banyak FoodLog".
-     */
     public function foodLogs(): HasMany
     {
         return $this->hasMany(FoodLog::class);
     }
 
-    /**
-     * Get all of the workouts for the User.
-     * Ini adalah relasi "satu User memiliki banyak Workout".
-     */
-    public function workouts(): HasMany // <-- PENAMBAHAN FUNGSI BARU ADA DI SINI
+    public function workouts(): HasMany 
     {
         return $this->hasMany(Workout::class);
     }
